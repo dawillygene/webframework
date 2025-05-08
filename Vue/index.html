@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script> -->
+    <!-- <script src="https://unpkg.com/vue@3.0.2"></script> -->
+    <script src="vue.global.js"></script>
+    <title>My Vue learning</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div v-if="visibility">
+            <p>
+                {{title }} - {{ name }} - {{ age}}
+            </p>
+
+            <ul>
+                <li v-for="book in books">
+                    <h2>{{ book.title}}</h2>
+                    <p>{{ book.year }}</p>
+                </li>
+            </ul>
+
+            <button @click="age++">increase age</button>
+            <button @click="age--">decrease age</button>
+            <div @click="changeHeader">change Title</div>
+        </div>
+        <button @click="toggle">
+            <span v-if="visibility">hide info</span>
+            <span v-else>show info</span>
+        </button>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
