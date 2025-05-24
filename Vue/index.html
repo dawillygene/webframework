@@ -4,37 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.js"></script> -->
-    <!-- <script src="https://unpkg.com/vue@3.0.2"></script> -->
+    <script src="https://unpkg.com/vue@3.0.2"></script>
     <script src="vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>My Vue learning</title>
+    <style>
+        .fav {
+            border: 2px solid red;
+        }
+    </style>
 </head>
 
 <body>
-
-    <div id="app">
-        <div v-if="visibility">
-            <p>
-                {{title }} - {{ name }} - {{ age}}
-            </p>
-
-            <ul>
-                <li v-for="book in books">
-                    <h2>{{ book.title}}</h2>
-                    <p>{{ book.year }}</p>
-                </li>
-            </ul>
-
-            <button @click="age++">increase age</button>
-            <button @click="age--">decrease age</button>
-            <div @click="changeHeader">change Title</div>
+    <div id="app" class="max-w-2xl mx-auto p-6 bg-gray-100">
+        <div v-if="listShow">
+            <div v-for="book in filteredBooks" @click="togglefav(book)" class="bg-white rounded-lg shadow-md p-4 mb-6 flex items-center space-x-4" :class="{ fav : book.isFav}">
+                <img :src="book.img" alt="" class="w-20 h-28 object-cover rounded-md border" />
+                <div>
+                    <h1 class="text-xl font-semibold mb-1">{{ book.name }}</h1>
+                    <p class="text-gray-600">{{ book.author }}</p>
+                </div>
+            </div>
         </div>
-        <button @click="toggle">
-            <span v-if="visibility">hide info</span>
-            <span v-else>show info</span>
+        <button @click="listShow = !listShow" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-orange-500 transition duration-300">
+        <span v-if="listShow">Hide books</span>
+        <span v-else>Show books</span>
         </button>
+
     </div>
-    <script src="script.js"></script>
+    <script src="script.js">
+    </script>
+
 </body>
 
 </html>
