@@ -18,7 +18,6 @@ user ? res.json(user) : res.status(404).send('User not found');
 
 
 
-
 app.post('/users',(req,res)=>{
   const newUser ={
     id: users.length+1,
